@@ -1,35 +1,32 @@
-package Practice;
-import java.util.Scanner;
+package package1;
 
 public class Time {
-	int hr;
-	int min;
 	
-	void accept() {
-		Scanner sc = new Scanner (System.in);
-		System.out.println("Enter the hours:  ");
-		 hr = sc.nextInt();
-		System.out.println("Enter the mins: ");
-		min = sc.nextInt();
+//	int hr;
+//	int min;
+//	public void accept() {
+//		
+//	}
+//public void display() {
+//		System.out.println("Hello");
+//	}
+	
+	private int num1=10;
+	int num2 = 20;
+	protected int num3= 40;
+	public int num4 = 50;
+	
+	public void display() {
+		System.out.println(num1);
+		System.out.println(num2);
+		System.out.println(num3);
+		System.out.println(num4);
 		
-		
-	}
-	void display() {
-		System.out.println("Time: " + hr + " : " + min);
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Time t1 = new Time();
-		t1.accept();
 
-	}
-	
-	public static void main1(String[]args) {
-		Time t1;
-		t1 = new Time();
-		t1.accept();
-		t1.display();
 	}
 
 }
