@@ -1,31 +1,69 @@
-package com.demo4;
-
+package com.app.dkte;
 import java.util.Scanner;
 
-public abstract class Employee {
+public class Employee extends Person {
 	int empid;
+	String department;
 	double salary;
-
-	public Employee() {
+	MyDate dateOfJoining;
+	
+	
+	 public int getEmpid() {
+		return empid;
 	}
 
-	public Employee(int empid, double salary) {
+
+	public void setEmpid(int empid) {
 		this.empid = empid;
+	}
+
+
+	public String getDepartment() {
+		return department;
+	}
+
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+
+
+	public double getSalary() {
+		return salary;
+	}
+
+
+	public void setSalary(double salary) {
 		this.salary = salary;
 	}
 
-	public void accept(Scanner sc) {
-		System.out.print("Enter the empid - ");
-		empid = sc.nextInt();
-		System.out.print("Enter the salary - ");
-		salary = sc.nextDouble();
+
+	public MyDate getDateOfJoining() {
+		return dateOfJoining;
 	}
 
-	public void display() {
-		System.out.println("Empid - " + empid);
-		System.out.println("Salary - " + salary);
+	public void setDateOfJoining(MyDate dateOfJoining) {
+		this.dateOfJoining = dateOfJoining;
 	}
 
-	public abstract void calculateTotalSalary();
+	@Override
+	public String toString() {
+		return "Employee [empid=" + empid + ", department=" + department + ", salary=" + salary + ", dateOfJoining="
+				+ dateOfJoining + "]";
+	}
+
+
+	 public void acceptEmployee(Scanner sc) {
+		 System.out.println("Enter the Employee empid: ");
+		 empid = sc.nextInt();
+		 System.out.println("Enter the Department: ");
+		 department = sc.next();
+		 System.out.println("Enter the Salary: ");
+		 salary = sc.nextDouble();
+		 System.out.println("Enter the date of joining");
+		 dateOfJoining.acceptDate(sc);
+		 
+		 
+	 }
 
 }
