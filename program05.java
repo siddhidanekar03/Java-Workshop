@@ -3,26 +3,23 @@ package com.app.demo2;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class program02 {
+public class program05 {
 	
 	public static void main (String[]  args) {
 		Scanner sc = new Scanner (System.in);
 	
-	double n;
-	double d ;
+	int n;
+	int d ;
 	try {
 		System.out.print("Enter the numerator: ");
-		n= sc.nextDouble();
+		n= sc.nextInt();
 		System.out.print("Enter the denominator: ");
-		d= sc.nextDouble();
-	 double result = n / d;
+		d= sc.nextInt();
+	 int result = n / d;
 	    System.out.println("Result: " + result);
-	} catch(ArithmeticException e){
-		System.out.println("cannot divide by zero");
-			
-	}catch (InputMismatchException e) {
-		// TODO: handle exception
-		System.out.println("Input invalid");
+	} finally {
+		System.out.println("Inside finally");//to close the resource
+		sc.close();
 	}
 	System.out.println("Program Finished!!!");
 	}
