@@ -1,23 +1,55 @@
-package com.demo4;
+package com.app.dkte;
+
+
+
+class InvalidTimeException extends RuntimeException{
+	public InvalidTimeException() {
+		
+	}
+	
+	public InvalidTimeException(String message) {
+		super(message);
+	}
+	
+}
+
+class Time{
+	private int hr, min;
+	
+	public void setHr(int hr ) {
+		if(hr < 0 || hr > 23)
+			throw new InvalidTimeException();
+		this.hr = hr;
+	}
+	
+	public void setMin(int min) {
+		if(min<=0 || min > 59) 
+			throw new InvalidTimeException();
+		this.min = min;
+	}
+
+	@Override
+	public String toString() {
+		return "Time [hr=" + hr + ", min=" + min + "]";
+	}
+	
+	
+}
+
 
 public class Program02 {
-
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Employee [] arr = new Employee[5];
-		
-		arr[0] = new Salesman();
-		arr[1] = new Manager();
-		arr[2] = new Salesman();
-		arr[3] = new Manager();
-		arr[4] = new Salesman();
-		
-	for(int i =0 ; i < 5; i++) {
-		System.out.println(arr[i]);
+	Time t1 = new Time();
+	try {
+	t1.setHr(24);
+	t1.setMin(60);
+	System.out.println(t1);
+	}catch(InvalidTimeException e) {
+		e.printStackTrace();
 		
 	}
-		
-
+	System.out.println("Program finished!!!");
 	}
+	
 
 }
