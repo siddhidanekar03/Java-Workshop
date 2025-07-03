@@ -1,29 +1,21 @@
-package com.app.demo2;
+package com.app.demo3;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class program04 {
 	
-	public static void main (String[]  args) {
-		Scanner sc = new Scanner (System.in);
-	
-	int n;
-	int d ;
-	try {
-		System.out.println("Enter the numerator: ");
-		n= sc.nextInt();
-		System.out.println("Enter the denominator: ");
-		d= sc.nextInt();
-	 int result = n / d;
-	    System.out.println("Result: " + result);
-	} catch(Exception e){
-		e.printStackTrace();//to avoid crashing and printing next message
+	public static void main(String[] args) {
+		
+		String s = "www.sunbeaminfotech.com/placements";
+		System.out.println("OG String-> " + s);
+		System.out.println("Tokens - > ");
+		
+		StringTokenizer st = new StringTokenizer(s, "./",true);
+		while(st.hasMoreTokens()){
+			System.out.println(st.nextToken());
 			
+		}
+		
 	}
-	System.out.println("Program Finished!!!");
-	}
-	
 
-	
 }

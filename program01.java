@@ -1,15 +1,21 @@
-package com.app.demo2;
+package com.app.demo3;
+
+import java.util.StringTokenizer;
 
 public class program01 {
-
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		StringBuffer sb1 = new StringBuffer("siddhi");
-		StringBuffer sb2 = new StringBuffer("siddhi");
 		
-		System.out.println("sb1- " +sb1);
-		System.out.println("sb2- " + sb2);
-		System.out.println("sb1==sb2- "  + (sb1==sb2));
+		String s = "www.sunbeaminfotech.com";
+		System.out.println("OG String-> " + s);
+		System.out.println("Tokens - > ");
+		
+		StringTokenizer st = new StringTokenizer(s, ".");
+		while(st.hasMoreTokens()){
+			System.out.println(st.nextToken());
+			
+		}
+		
 	}
 
 }

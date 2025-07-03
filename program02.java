@@ -1,14 +1,21 @@
-package com.app.demo2;
+package com.app.demo3;
+
+import java.util.StringTokenizer;
 
 public class program02 {
-
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		StringBuffer sb1 = new StringBuffer("siddhi");
-		sb1.append(" Scada");
 		
-		System.out.println("sb1- " +sb1);
-
-}
+		String s = "www sunbeaminfotech com";
+		System.out.println("OG String-> " + s);
+		System.out.println("Tokens - > ");
+		
+		StringTokenizer st = new StringTokenizer(s);
+		while(st.hasMoreTokens()){
+			System.out.println(st.nextToken());
+			
+		}
+		
+	}
 
 }
