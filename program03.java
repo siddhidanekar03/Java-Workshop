@@ -1,26 +1,26 @@
 package com.app.demo2;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 public class program03 {
-	
-	public static void main (String[]  args) {
-		
-	
-	int n;
-	int d ;
-	try (Scanner sc = new Scanner (System.in)){//other way to close the resource
-		System.out.print("Enter the numerator: ");
-		n= sc.nextInt();
-		System.out.print("Enter the denominator: ");
-		d= sc.nextInt();
-	 int result = n / d;
-	    System.out.println("Result: " + result);
-	} 
-	System.out.println("Program Finished!!!");
-	}
-	
 
-	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String s1 = "sunbeam";
+		String s2 = "sunbeam";
+		
+		StringBuffer sb1 = new StringBuffer("sunbeam");
+		StringBuffer sb2 = new StringBuffer("sunbeam");
+		
+		System.out.println("s1==s2 - " + (s1==s2));
+		System.out.println("s1.equals(s2) - " + (s1.equals(s2)));
+		
+		System.out.println("s1==s2 - " + (s1==s2));
+		System.out.println("s1.equals(s2) - " + (s1.equals(s2)));	
+		
+		System.out.println("sb1==sb2 - " + (sb1==sb2));
+		System.out.println("sb1.equals(sb2) - " + (sb1.equals(sb2)));//equals method is object class method it doesn't override	
+		
+		
+		
+}
+
 }

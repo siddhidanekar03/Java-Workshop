@@ -1,32 +1,14 @@
 package com.app.demo2;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 public class program02 {
-	
-	public static void main (String[]  args) {
-		Scanner sc = new Scanner (System.in);
-	
-	double n;
-	double d ;
-	try {
-		System.out.print("Enter the numerator: ");
-		n= sc.nextDouble();
-		System.out.print("Enter the denominator: ");
-		d= sc.nextDouble();
-	 double result = n / d;
-	    System.out.println("Result: " + result);
-	} catch(ArithmeticException e){
-		System.out.println("cannot divide by zero");
-			
-	}catch (InputMismatchException e) {
-		// TODO: handle exception
-		System.out.println("Input invalid");
-	}
-	System.out.println("Program Finished!!!");
-	}
-	
 
-	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		StringBuffer sb1 = new StringBuffer("siddhi");
+		sb1.append(" Scada");
+		
+		System.out.println("sb1- " +sb1);
+
+}
+
 }
