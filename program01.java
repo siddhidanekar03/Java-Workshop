@@ -1,28 +1,31 @@
-package com.app.demo2;
+package com.app.demo3;
 
-import java.util.Stack;
-import java.util.Vector;
+import java.util.ArrayDeque;
+import java.util.Queue;
 
 public class program01 {
 
 	public static void main(String[] args) {
-//		Vector<Integer> v = new Vector<Integer>();
-//		for(int i =1; i<=10; i++)
-//			v.add(i);
-//			v.add(11);
-//		System.out.println("Capacity: " + v.capacity());
-//		System.out.println("Size: " + v.size());
+		Queue<Integer> q1 = new ArrayDeque<>();
+		q1.add(10);
+		q1.offer(20);
+		q1.add(30);
+		q1.offer(40);
+
+		System.out.println("Element at front - " + q1.peek());
+		System.out.println("Element at front - " + q1.element());
+
+	    q1.poll();
+		q1.remove();
 		
-		
-		Stack<Integer> s = new Stack<Integer>();
-		s.push(10);
-		s.push(20);
-		s.push(30);
-		s.push(40);
-		s.push(60);
-		System.out.println( "Pop : "+ s.pop());
-		System.out.println("Element on top: " + s.peek());
-		
-		
+
+////		q1.poll();
+//		q1.remove();
+//
+		System.out.println("After remove,Element at front - " + q1.peek());
+		System.out.println("After remove,Element at front - " + q1.element());
+
+	}
+
 }
-}
+
