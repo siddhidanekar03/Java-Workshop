@@ -1,36 +1,28 @@
-package com.app.demo1;
+package com.app.demo2;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.Stack;
+import java.util.Vector;
 
 public class program01 {
 
-	
-	
 	public static void main(String[] args) {
-		List<String>l1 = new ArrayList<>();
-		l1.add("Anil");
-		l1.add("Siya");
-		l1.add("Neha");
-		l1.add("Ram");
-		l1.add("Sham");
+//		Vector<Integer> v = new Vector<Integer>();
+//		for(int i =1; i<=10; i++)
+//			v.add(i);
+//			v.add(11);
+//		System.out.println("Capacity: " + v.capacity());
+//		System.out.println("Size: " + v.size());
 		
-		System.out.println("Display: ");
-		for(String s : l1) {
-			System.out.println(s);
-		}
 		
-//		System.out.println("Index of Ram: " + l1.indexOf("Ram"));
-//		System.out.println("Element at index 3: " + l1.get(3));
-//		System.out.println("Last index: "  + l1.lastIndexOf("Siya"));
+		Stack<Integer> s = new Stack<Integer>();
+		s.push(10);
+		s.push(20);
+		s.push(30);
+		s.push(40);
+		s.push(60);
+		System.out.println( "Pop : "+ s.pop());
+		System.out.println("Element on top: " + s.peek());
 		
-		Collections.sort(l1);
-		System.out.println("Display: ");
-		for(String s : l1) {
-			System.out.println(s);
-		}
-
-	}
-
+		
+}
 }
