@@ -1,31 +1,74 @@
-package com.app.demo3;
+package com.app.demo1;
 
-import java.util.ArrayDeque;
-import java.util.Queue;
+import java.util.Objects;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.LinkedHashSet;
 
-public class program01 {
 
-	public static void main(String[] args) {
-		Queue<Integer> q1 = new ArrayDeque<>();
-		q1.add(10);
-		q1.offer(20);
-		q1.add(30);
-		q1.offer(40);
-
-		System.out.println("Element at front - " + q1.peek());
-		System.out.println("Element at front - " + q1.element());
-
-	    q1.poll();
-		q1.remove();
+class product{
+	int pid;
+	String name; 
+	double price;
+	
+	public product() {
 		
-
-////		q1.poll();
-//		q1.remove();
-//
-		System.out.println("After remove,Element at front - " + q1.peek());
-		System.out.println("After remove,Element at front - " + q1.element());
-
+	}
+	
+	public product(int pid, String name, double price) {
+		this.pid = pid;
+		this.name = name;
+		this.price = price;
 	}
 
+	@Override
+	public String toString() {
+		return "product [pid=" + pid + ", name=" + name + ", price=" + price + "]";
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, pid, price);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		product other = (product) obj;
+		return Objects.equals(name, other.name) && pid == other.pid
+				&& Double.doubleToLongBits(price) == Double.doubleToLongBits(other.price);
+	}
+	
+	 
 }
 
+public class program01 {
+	
+	public static void main(String[] args) {
+		Set<product> pro = new LinkedHashSet<product>();
+		pro.add(new product(1, "Pen", 15));
+		pro.add(new product(2, "Pencil", 10));
+		pro.add(new product(3, "Eraser", 5));
+		pro.add(new product(4, "Ruler", 25));
+		pro.add(new product(5, "Book", 50));
+		pro.add(new product(5, "Book", 50));//product can not be duplicated 
+		//to check the duplicates we need to override the hashCode() and toString() methods
+		
+		System.out.println("Size: " + pro.size());
+		
+		for(product p : pro) {
+			System.out.println(p);
+		}
+		
+		
+		
+		
+		
+		
+	}
+}

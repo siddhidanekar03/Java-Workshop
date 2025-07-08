@@ -1,21 +1,26 @@
-package com.app.demo3;
+package com.app.demo1;
 
-import java.util.PriorityQueue;
-import java.util.Queue;
+
+
+import java.util.Set;
+import java.util.TreeSet;
 
 public class program02 {
-	
+
 	public static void main(String[] args) {
-		Queue<Integer> q = new PriorityQueue<>();
-		q.add(30);
-		q.add(10);
-		q.add(40);
-		q.add(20);
+//		Set<String> s1 = new HashSet<>(); // order of the elements is not maintained
+//		Set<String> s1 = new LinkedHashSet<>(); // maintains the order of insertion
+		Set<String> s1 = new TreeSet<>(); // maintains the natural ordering of the elements
+		s1.add("Suresh");
+		s1.add("Mukesh");
+		s1.add("Anil");
+		s1.add("Ramesh");
+		s1.add("Ram");
 
-		System.out.println("Element at peek - " + q.peek());
-		q.poll();
-		System.out.println("After remove element at peek - " + q.peek());
+		System.out.println("size of s1 - " + s1.size());
 
+		for (String s : s1)
+			System.out.println(s);
 	}
 
 }
