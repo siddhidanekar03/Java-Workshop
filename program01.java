@@ -1,74 +1,46 @@
-package com.app.demo1;
-
-import java.util.Objects;
-import java.util.HashSet;
+package com.app.demo2;
+import java.util.Collection;
+import java.util.Map;
 import java.util.Set;
-import java.util.LinkedHashSet;
-
-
-class product{
-	int pid;
-	String name; 
-	double price;
-	
-	public product() {
-		
-	}
-	
-	public product(int pid, String name, double price) {
-		this.pid = pid;
-		this.name = name;
-		this.price = price;
-	}
-
-	@Override
-	public String toString() {
-		return "product [pid=" + pid + ", name=" + name + ", price=" + price + "]";
-	}
-	
-	@Override
-	public int hashCode() {
-		return Objects.hash(name, pid, price);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		product other = (product) obj;
-		return Objects.equals(name, other.name) && pid == other.pid
-				&& Double.doubleToLongBits(price) == Double.doubleToLongBits(other.price);
-	}
-	
-	 
-}
+import java.util.TreeMap;
 
 public class program01 {
-	
+
 	public static void main(String[] args) {
-		Set<product> pro = new LinkedHashSet<product>();
-		pro.add(new product(1, "Pen", 15));
-		pro.add(new product(2, "Pencil", 10));
-		pro.add(new product(3, "Eraser", 5));
-		pro.add(new product(4, "Ruler", 25));
-		pro.add(new product(5, "Book", 50));
-		pro.add(new product(5, "Book", 50));//product can not be duplicated 
-		//to check the duplicates we need to override the hashCode() and toString() methods
-		
-		System.out.println("Size: " + pro.size());
-		
-		for(product p : pro) {
-			System.out.println(p);
-		}
-		
-		
-		
-		
-		
-		
+	  Map<Integer, String> m = new TreeMap<>();
+	  m.put(111, "Neha");
+	  m.put(112, "Sanika");
+	  m.put(113,  "Yukta");
+	  m.put(114, "Revati");
+	  m.put(115, "Siya");
+	  m.put(115, "Siya");//duplicate keys are not allowed
+	//m.put(115, "Siya");//duplicate values are allowed
+	  m.put(115, "Riya");// If keys are duplicated it will replace the value
+	  m.put(117 ,null);
+	  m.put(118 ,null);
+	  
+	  
+	 
+	  
+	  System.out.println("Display Keys-> ");
+	  Set<Integer> keys = m.keySet();
+	  for(Integer k : keys) {
+		  System.out.println(k);
+	  }
+	  
+	  System.out.println("Display Values-> ");
+	 Collection<String> values = m.values();
+	  for(String v : values) {
+		  System.out.println(v);
+	  }
+	  
+	  Set<Map.Entry<Integer, String>> entries = m.entrySet();
+	  for(Map.Entry<Integer, String>e : entries ) {
+		  System.out.println(e.getKey() + "-" + e.getValue());
+	  }
+	  
+	  
+
 	}
+
 }
