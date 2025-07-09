@@ -1,75 +1,36 @@
-package com.app.demo3;
-import java.util.List;
+package com.app.demo1;
 
-import javax.swing.plaf.synth.SynthOptionPaneUI;
-
-interface Acceptable{
+class Outer{
 	
-	void accept();//public abstract
+	int field1;
+	static int field2;
 	
-	default void display() {
-		System.out.println("aceeptable :: display");
-	}
-	
-	static <T> void sort(List<T> l1) {
+	//not static inner class
+	class Inner{
+		int field3;
+		//static int field4; //not ok
+		void innerMethod() {
+			System.out.println(field1);
+			System.out.println(field2);
+			System.out.println(field3);
+		}
 		
-	}
-}
-
-//interface Displayable{
-//void display() ;
-//}
-   
-class Employee implements Acceptable{
-
-	@Override
-	public void accept() {
-		System.out.println("Employee :: Accept");
+		//static void innerMethod1() {}//not ok
 		
-	}
-	@Override
-	public void display() {
-		System.out.println("Employee::Display");
-	}
-	
-}
-
-class Time implements Acceptable{
-
-	@Override
-	public void accept() {
-		System.out.println("Time :: Accept");
 		
-	}
-	
-	
-}
-
-class Product implements Acceptable{
-
-	@Override
-	public void accept() {
-		System.out.println("Product :: Accept");
-		
-	}
-	@Override
-	public void display() {
-		System.out.println("Product :: Display");
 	}
 	
 }
 
 public class program01 {
-
+	
 	public static void main(String[] args) {
-		Acceptable a;
-		//a = new Employee();
-		a = new Time();
-		//a = new Product();
+		Outer outer = new Outer();
+		Outer.Inner in =  outer.new Inner();
 		
-	a.accept();
-	a.display();
-
+		
+		
+		
 	}
 
 }

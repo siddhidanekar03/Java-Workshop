@@ -1,26 +1,46 @@
 package com.app.demo1;
 
-
-
-import java.util.Set;
-import java.util.TreeSet;
+class Outer1{
+	
+	int field1;
+	static int field2;
+	
+	// static inner class
+	static class Inner{
+		int field3;
+		static int field4; 
+		void innerMethod() {
+			Outer1 o1 = new Outer1();
+			//System.out.println(field1);//not ok
+			System.out.println(field2);
+			System.out.println(field3);
+			System.out.println(field4);
+			System.out.println(o1.field1);
+		}
+		
+		static void innerMethod1() {
+			Outer1 o1 = new Outer1();
+			//System.out.println(field1);//not ok
+			System.out.println(field2);
+			//System.out.println(o1.field3); //not ok
+			System.out.println(field4);
+			System.out.println(o1.field1);
+		}
+		
+		
+	}
+	
+}
 
 public class program02 {
-
+	
 	public static void main(String[] args) {
-//		Set<String> s1 = new HashSet<>(); // order of the elements is not maintained
-//		Set<String> s1 = new LinkedHashSet<>(); // maintains the order of insertion
-		Set<String> s1 = new TreeSet<>(); // maintains the natural ordering of the elements
-		s1.add("Suresh");
-		s1.add("Mukesh");
-		s1.add("Anil");
-		s1.add("Ramesh");
-		s1.add("Ram");
-
-		System.out.println("size of s1 - " + s1.size());
-
-		for (String s : s1)
-			System.out.println(s);
+		Outer outer = new Outer();
+		Outer.Inner in =  outer.new Inner();
+		
+		
+		
+		
 	}
 
 }
