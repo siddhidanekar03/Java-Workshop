@@ -1,69 +1,37 @@
-package com.app.dkte;
-import java.util.Scanner;
+package com.app.demo4;
 
-public class Employee extends Person {
+class Employee implements Comparable<Employee> {
+	
 	int empid;
-	String department;
+	String name;
 	double salary;
-	MyDate dateOfJoining;
 	
-	
-	 public int getEmpid() {
-		return empid;
+	public Employee() {
+		
 	}
-
-
-	public void setEmpid(int empid) {
+	
+	public Employee(int empid, String name, double salary) {
 		this.empid = empid;
+		this.name = name;
+		this.salary = salary;
 	}
-
-
-	public String getDepartment() {
-		return department;
+	
+	public String toString() {
+		return "Employee [ Empid: " + empid + ", Name: " + name + ", Salary: " + salary + "]";
 	}
-
-
-	public void setDepartment(String department) {
-		this.department = department;
+	
+	public String getName() {
+		return name;
 	}
-
-
+	
 	public double getSalary() {
 		return salary;
 	}
 
-
-	public void setSalary(double salary) {
-		this.salary = salary;
-	}
-
-
-	public MyDate getDateOfJoining() {
-		return dateOfJoining;
-	}
-
-	public void setDateOfJoining(MyDate dateOfJoining) {
-		this.dateOfJoining = dateOfJoining;
-	}
-
 	@Override
-	public String toString() {
-		return "Employee [empid=" + empid + ", department=" + department + ", salary=" + salary + ", dateOfJoining="
-				+ dateOfJoining + "]";
+	public int compareTo(Employee o) {
+		// TODO Auto-generated method stub
+		return this.empid - o.empid ;
 	}
-
-
-	 public void acceptEmployee(Scanner sc) {
-		 System.out.println("Enter the Employee empid: ");
-		 empid = sc.nextInt();
-		 System.out.println("Enter the Department: ");
-		 department = sc.next();
-		 System.out.println("Enter the Salary: ");
-		 salary = sc.nextDouble();
-		 System.out.println("Enter the date of joining");
-		 dateOfJoining.acceptDate(sc);
-		 
-		 
-	 }
 
 }
