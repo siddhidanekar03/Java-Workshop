@@ -1,31 +1,18 @@
-package com.app.demo1;
+package com.app.demo3;
 
-class Box <T>{
-	private T obj;
-	
-	public void setObj(T obj) {
-		this.obj = obj;
-	}
-	
-	public T getObj() {
+@FunctionalInterface
+interface acceptable{
+	void accept();// Single abstract method
+	default void display() {
 		
-		return obj;
 	}
+	
 }
-
 public class Program01 {
-	
+
 	public static void main(String[] args) {
-		Box<Integer> b1 = new Box <Integer>();
-		b1.setObj(10);
 		
-		Integer i1 = b1.getObj();
-		System.out.println("i1- " + i1);
-		
-		Box<String> b2 = new Box <String>();
-		b2.setObj("subeam");
-		String s1 = b2.getObj();
-		System.out.println("s1- " + s1);
+
 	}
 
 }

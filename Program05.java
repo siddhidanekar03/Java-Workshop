@@ -1,17 +1,19 @@
-package com.app.demo1;
+package com.app.demo3;
+import java.util.function.BinaryOperator;
 
 public class Program05 {
-	
-	public static void main(String[] args) {
-		String s1 = "sunbeam";
-		//String s2 = new String("sunbeam");
-		String s2 = "sunbeam";
-		s2 = "infotech";//creates new object
+	public static void doWork(Integer v1, Integer v2, BinaryOperator<Integer> op) {
+		System.out.println("Result - " + op.apply(v1, v2));
+	}
 
+	public static void main(String[] args) {
+		int z = 20;
 		
-		System.out.println("s1 - " + s1 );
-		System.out.println("s2 - " + s2);
-		System.out.println("s1==s2 " + (s1==s2));
+		//capturing lambda
+		doWork(10, 20, (x, y)-> x + y + z );
+		doWork(10, 20, (x, y)-> x - y - z );
+		doWork(60, 20, (x, y)-> x / y + z );
+		doWork(10, 20, (x, y)-> x * y * z);
 		
 
 	}
