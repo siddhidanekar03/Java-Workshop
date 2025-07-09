@@ -1,36 +1,32 @@
-package com.app.demo1;
-
-class Outer{
-	
-	int field1;
-	static int field2;
-	
-	//not static inner class
-	class Inner{
-		int field3;
-		//static int field4; //not ok
-		void innerMethod() {
-			System.out.println(field1);
-			System.out.println(field2);
-			System.out.println(field3);
-		}
-		
-		//static void innerMethod1() {}//not ok
-		
-		
-	}
-	
-}
+package com.app.demo2;
+import java.util.Comparator;
+import java.util.Arrays;
 
 public class program01 {
-	
+
 	public static void main(String[] args) {
-		Outer outer = new Outer();
-		Outer.Inner in =  outer.new Inner();
+		
+		Integer arr[] = {30, 20, 40, 50, 10};
+		
+		class IntegerComparator implements Comparator<Integer>{
+
+			@Override
+			public int compare(Integer o1, Integer o2) {
+				
+				return o1 - o2;
+			}
+			
+		}
+		
+		IntegerComparator comparator = new IntegerComparator();
+		
+		System.out.println("Before Sorting: " + Arrays.toString(arr));
+		Arrays.sort(arr, comparator);
+		System.out.println("After Sorting: " + Arrays.toString(arr));
 		
 		
 		
-		
+
 	}
 
 }
