@@ -1,42 +1,49 @@
-package com.sunbeam;
+package com.app.demo5;
 
- class Student {
+import java.util.Scanner;
+
+class Student implements Comparable<Student> {
 	int rollno;
 	String name;
 	double marks;
 	
-
-	public Student(int rollno, String name, double marks) {
+	public Student() {
 		
+	}
+	public Student(int rollno, String name, double marks) {
 		this.rollno = rollno;
 		this.name = name;
 		this.marks = marks;
 	}
+	@Override
+	public String toString() {
+		return "Student [rollno=" + rollno + ", name=" + name + ", marks=" + marks + "]";
+	}
+
+	public String getName() {
+		return name;
+	}
+	public int getRollno() {
+		return rollno;
+	}
+	public double getMarks() {
+		return marks;
+	}
 	
-	public void display() {
-		System.out.println("Roll no.: " + rollno);
-		System.out.println("Name : " + name);
-		System.out.println("Marks: " + marks);
-		
-	}
-
-
-	public static void main(String[] args) {
+	public void accept(Scanner sc) {
+	
+			System.out.println("Enter rollno: ");
+			this.rollno = sc.nextInt();
+			System.out.println("Enter name: ");
+			 this.name = sc.next();
+			System.out.println("Enter marks: ");
+			this.marks = sc.nextDouble();
+			
+		}
+	@Override
+	public int compareTo(Student o) {
 		// TODO Auto-generated method stub
-		Student [] arr = new Student[5];
-		arr[0] = new Student(1, "Neha", 80);
-		arr[1] = new Student(2, "Reva", 50);
-		arr[2] = new Student(3, "Shreya", 70);
-		arr[3] = new Student(4, "Riya", 60);
-		arr[4] = new Student(5, "Siya", 90);
-		
-		for(int i=0; i < arr.length;i++) {
-			  
-			 arr[i].display();
-			 System.out.println("----------------");
-		  }
-		
-
+		return this.rollno - o.rollno;
 	}
-
+	
 }
