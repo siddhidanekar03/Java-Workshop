@@ -1,122 +1,89 @@
-package com.app.dkte;
-import java.util.Scanner;
+package com.app.demo3;
 
+
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Menu {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Scanner sc = new Scanner(System.in);
-		Employee [] emp = new Employee[10];
-		int choice;
-		int index = 0;
-		
-		do {
-			System.out.println("0. Exit");
-			System.out.println("1. Add Employee");
-			System.out.println("2. Display Employee");
-			System.out.println("3. Search Employee by Id");
-			System.out.println("4. Display Employees joined in given Year:");
-			System.out.println("5. Find Employee with Maximum Salary:");
-			System.out.println("6. Find Employee with Minimum Salary");
-			System.out.println("Enter your Choice: ");
-			choice = sc.nextInt();
-		
-		
-		switch (choice) {
-		case 1: System.out.println("1. Add Employee");
-			if(index < 10) {
-				emp[index] = new Employee();
-				emp[index].acceptEmployee(sc);
-				index++;
-			}else {
-				System.out.println("Array is Full");
-			}
-			break;
-			
-		case 2: System.out.println("2. Display Employee");
-		         for(Employee e1 : emp) {
-		        	 if(e1 != null) {
-		        		 System.out.println(e1.toString());
-		        	 }
-		         }
-		         break;
-		         
-		case 3: System.out.println("3. Search Employee by Id");
-				System.out.println("Enter Employee Id to search");
-				int search = sc.nextInt();
-				boolean found = false;
-				for(Employee e1 : emp) {
-					if(e1 != null && e1.getEmpid() == search) {
-						System.out.println("Employee Found");
-						e1.toString();
-						found = true;
-						break;
-					}
-					if(!found) {
-						System.out.println("Employee not found");
-					}
-				}
-				break;
-				
-		case 4: System.out.println("4. Display Employees joined in given Year:");
-			     System.out.println("Enter the year: ");
-			     int year = sc.nextInt();
-			     boolean match = false;
-			     for(Employee e1 : emp) {
-			    	 if(e1 != null && e1.getDateOfJoining().getYear() == year) {
-			    		 e1.toString();
-			    		 match = true;
-			    		 break;
-			    		 }
-			    	 if(!match) {
-			    		 System.out.println("Not found");
-			    	 }
-			     }
-			     break;
-			     
-		case 5: System.out.println("5. Find Employee with Maximum Salary:");
-		           double maxSalary = Double.MIN_VALUE;
-		           Employee maxEmp = null;
-		            for (Employee e1 : emp) {
-			        if (e1 != null && maxSalary < e1.getSalary()) {
-				     maxSalary = e1.getSalary();
-				     maxEmp = e1;
-			       }
-		     }
-		        if (maxEmp != null) {
-			        System.out.println("Employee with Maximum Salary: " + maxEmp);
-		        }
-		        else {
-			         System.out.println("Employee Not found");
-		        }
-		break;
-		
-		case 6: System.out.println("6. Find Employee with Minimum Salary");
-			    double minSalary = Double.MAX_VALUE;
-			    Employee minEmp = null;
-			    for(Employee e1 : emp) {
-			    	if(e1 != null && minSalary > e1.getSalary()) {
-			    		minSalary = e1.getSalary();
-			    		minEmp = e1;
-			    	}
-			    }
-			    
-			    if(minEmp != null) {
-			    	System.out.println("Employee with Minimum Salary: " + minEmp);
-			    }else {
-			    	System.out.println("Employee not found");
-			    }
-			    break;
-		case 0 : System.out.println("Exit");
-		break;
-		             
-		
-
-		default:System.out.println("Wrong Choice");
-			break;
+	public static void main2(String[] args) {
+		Product p = new Product(1, "iPhone16", 89000.0);
+		String path = "D:\\\\siddhi\\dkte.txt";
+		try(FileOutputStream fout = new FileOutputStream(path)) {
+			try(DataOutputStream dout = new DataOutputStream(fout)) {
+				dout.writeInt(p.getPid());
+				dout.writeUTF(p.getName());
+				dout.writeDouble(p.getPrice());
+				System.out.println("File Saved.");
+			} // dout.close();
+		} // fout.close(); 
+		catch (Exception e) {
+			e.printStackTrace();
 		}
-	}while(choice !=0 );
 	}
-
+	
+	public static void main(String[] args) {
+		String path = "D:\\\\siddhi\\dkte.txt";
+		try(FileInputStream fin = new FileInputStream(path)) {
+			try(DataInputStream din = new DataInputStream(fin)) {
+				int id = din.readInt();
+				String name = din.readUTF();
+				double price = din.readDouble();
+				Product p = new Product(id, name, price);
+				System.out.println("File Read: " + p);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void main3(String[] args) {
+		List<Product> list = new ArrayList<>();
+		list.add(new Product(1, "Prod1", 100.0));
+		list.add(new Product(2, "Prod2", 200.0));
+		list.add(new Product(3, "Prod3", 300.0));
+		
+		String path = "D:\\\\siddhi\\dkte.txt";
+		try(FileOutputStream fout = new FileOutputStream(path)) {
+			try(DataOutputStream dout = new DataOutputStream(fout)) {
+				for (Product p : list) {
+					dout.writeInt(p.getPid());
+					dout.writeUTF(p.getName());
+					dout.writeDouble(p.getPrice());					
+				}
+				System.out.println("File Saved.");
+			} // dout.close();
+		} // fout.close(); 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void main1(String[] args) {
+		List<Product> list = new ArrayList<>();
+		String path = "D:\\siddhi\\dkte.txt";
+		try(FileInputStream fin = new FileInputStream(path)) {
+			try(DataInputStream din = new DataInputStream(fin)) {
+				while(true) {
+					int id = din.readInt();
+					String name = din.readUTF();
+					double price = din.readDouble();
+					Product p = new Product(id, name, price);
+					list.add(p);
+					System.out.println("File Read: " + p);
+				}
+			}
+		}
+		catch (EOFException e) {
+			System.out.println("All Records Read: " + list.size());
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
