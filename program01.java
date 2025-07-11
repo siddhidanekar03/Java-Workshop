@@ -1,31 +1,34 @@
-package com.app.demo2;
-import java.util.Comparator;
-import java.util.Arrays;
+package com.app.demo1;
+
+import java.io.File;
+import java.util.Scanner;
 
 public class program01 {
 
 	public static void main(String[] args) {
-		
-		Integer arr[] = {30, 20, 40, 50, 10};
-		
-		class IntegerComparator implements Comparator<Integer>{
-
-			@Override
-			public int compare(Integer o1, Integer o2) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the path:");
+		String path = sc.next();
+		File f = new File(path);
+		if(f.exists()) {
+			if(f.isFile()) {
+				System.out.println("File Name: " + f.getName());
+				System.out.println("File Size: " +  f.length());
+				System.out.println(("Last modified: " + f.lastModified()));
 				
-				return o1 - o2;
+				
 			}
-			
+			else if(f.isDirectory()) {
+				System.out.println("Directory Name: " + f.getName());
+				String[] files = f.list();
+				for(String file : files) {
+					System.out.println(file);
+				}
+			}
 		}
-		
-		IntegerComparator comparator = new IntegerComparator();
-		
-		System.out.println("Before Sorting: " + Arrays.toString(arr));
-		Arrays.sort(arr, comparator);
-		System.out.println("After Sorting: " + Arrays.toString(arr));
-		
-		
-		
+		else {
+			System.out.println("Invalid Path");
+		}
 
 	}
 
