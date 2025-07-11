@@ -1,35 +1,56 @@
-package com.app.demo1;
+package com.app.demo2;
 
-import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
 import java.util.Scanner;
 
 public class program01 {
 
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter the path:");
-		String path = sc.next();
-		File f = new File(path);
-		if(f.exists()) {
-			if(f.isFile()) {
-				System.out.println("File Name: " + f.getName());
-				System.out.println("File Size: " +  f.length());
-				System.out.println(("Last modified: " + f.lastModified()));
-				
-				
-			}
-			else if(f.isDirectory()) {
-				System.out.println("Directory Name: " + f.getName());
-				String[] files = f.list();
-				for(String file : files) {
-					System.out.println(file);
-				}
-			}
-		}
-		else {
-			System.out.println("Invalid Path");
-		}
-
+	public static void main1(String[] args) {
+	Scanner sc = new Scanner(System.in);
+	System.out.println("Enter the to be written in file");
+	String path = "C:/Users//Dell/Documents/DD/note.txt";
+	try(FileOutputStream fout = new FileOutputStream(path)) {
+		try(PrintStream pout = new PrintStream(fout)){
+		pout.println(1234);
+		pout.println(123.4);
+		pout.println("Siddhi");
+		
+		while(true) {
+			String line = sc.nextLine();
+			if(line.isEmpty())
+				break;
+			pout.println(line);
+		}System.out.println("File Saved");
+		
+	   } 
+	} catch (IOException e) {
+		
+		e.printStackTrace();
 	}
 
-}
+	}
+	//"C:/Users//Dell/Documents/DD/note.txt";
+	public static void main(String[] args) {
+		String path = "C:/Users//Dell/Documents/DD/note.txt";
+		String line = "";
+		try(FileInputStream fin = new FileInputStream(path)){
+			try(Scanner sc = new Scanner(fin)){
+				while(sc.hasNext()) {
+					line = sc.next();
+					System.out.println(line);
+				}
+			}//sc close()
+		}//fin close() 
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		}
+		
+	}
+
+
